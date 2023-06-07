@@ -1,0 +1,7 @@
+def jbouncer_login(data, buffer, args):
+	weechat.command("","/msg root "+bnc_username+" "+bnc_password)
+	weechat.command("","/msg root connect "+bnc_ircname)
+	weechat.command("","/msg root create "+bnc_ircname+" "+bnc_irchost+" "+str(bnc_ircport)+" "+bnc_ircpass)
+	return weechat.WEECHAT_RC_OK
+weechat.register("jbouncer", "delphijustin", "1.0", "None", "JBouncer AutoLogin", "", "")
+weechat.hook_signal("*,irc_in2_003", "jbouncer_login", "")

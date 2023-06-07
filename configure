@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+read -p "Enter jbouncer username: " bnc_username
+read -p "Enter jbouncer password: " bnc_password
+read -p "Enter IRC Network Name(NOT HOSTNAME): " bnc_ircname
+read -p "Enter IRC Network Hostname/IP: " bnc_irchost
+read -p "Enter Server Port(press enter for default): " bnc_ircport
+if [[ !$bnc_ircport ]]; then
+let bnc_ircport=6667
+fi
+read -p "Enter IRC Network Password: " bnc_ircpass
+echo Creating python script...
+echo import weechat > jbouncer.py
+echo bnc_username = \"$bnc_username\" >> jbouncer.py
+echo bnc_password = \"$bnc_password\" >> jbouncer.py
+echo bnc_ircname = \"$bnc_ircname\" >> jbouncer.py
+echo bnc_irchost = \"$bnc_irchost\" >> jbouncer.py
+echo bnc_ircport = "$bnc_ircport" >> jbouncer.py
+echo bnc_ircpass = \"$bnc_ircpass\" >> jbouncer.py
+cat jbouncer.pyfooter >> jbouncer.py
+echo Done.
